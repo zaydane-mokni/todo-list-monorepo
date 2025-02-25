@@ -57,7 +57,6 @@ describe('TasksService', () => {
       const result: Task = await service.create(createTaskDto);
 
       expect(result).toEqual(mockTask);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(model.create).toHaveBeenCalledWith(createTaskDto);
     });
   });
@@ -67,7 +66,6 @@ describe('TasksService', () => {
       const result: Task[] = await service.findAll();
 
       expect(result).toEqual([mockTask]);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(model.find).toHaveBeenCalled();
     });
   });
@@ -77,7 +75,6 @@ describe('TasksService', () => {
       const result: Task = await service.findOne(mockTask._id);
 
       expect(result).toEqual(mockTask);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(model.findById).toHaveBeenCalledWith(mockTask._id);
     });
 
@@ -95,7 +92,6 @@ describe('TasksService', () => {
       const result: Task = await service.update(mockTask._id, updateTaskDto);
 
       expect(result).toEqual(mockTask);
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(model.findByIdAndUpdate).toHaveBeenCalledWith(mockTask._id, updateTaskDto, {
         new: true,
       });
@@ -115,7 +111,6 @@ describe('TasksService', () => {
       const result: void = await service.remove(mockTask._id);
 
       expect(result).toBeUndefined();
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(model.findByIdAndDelete).toHaveBeenCalledWith(mockTask._id);
     });
 
