@@ -41,7 +41,7 @@ describe('CreateTask.vue', () => {
 
   it('displays an error message when addTask fails', async () => {
     const taskStore = useTaskStore();
-    vi.spyOn(taskStore, 'addTask').mockRejectedValue(new Error('Failed to add task'));
+    vi.spyOn(taskStore, 'addTask').mockRejectedValue(new Error('Erreur lors de la suppression.'));
 
     const wrapper = mount(CreateTask);
     wrapper.findComponent(TaskForm).vm.$emit('task-submit', {
@@ -51,6 +51,6 @@ describe('CreateTask.vue', () => {
     });
     await flushPromises();
 
-    expect(wrapper.text()).toContain('Failed to add task');
+    expect(wrapper.text()).toContain('Erreur lors de la suppression.');
   });
 });
