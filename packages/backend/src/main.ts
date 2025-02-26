@@ -13,6 +13,11 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors({
+    origin: 'http://localhost:5173',
+    allowedHeaders: 'Content-Type, Authorization',
+  });
+
   await app.listen(3000);
 }
 
