@@ -2,9 +2,7 @@
   <div class="container mx-auto p-30">
     <h1 class="text-3xl font-bold mb-6">All Tasks</h1>
 
-    <div v-if="errorMessage" class="text-red-500 text-center mb-4">
-      {{ errorMessage }}
-    </div>
+    <ErrorMessage  v-if="errorMessage" :message="errorMessage" />
 
     <div v-else>
       <div v-if="taskStore.loading" class="flex justify-center items-center">
@@ -28,6 +26,7 @@
 
 <script setup lang="ts">
 import TaskItem from '../components/TaskItem.vue';
+import ErrorMessage from '../components/ErrorMessage.vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '../store/tasks.ts';
 import { onMounted, ref } from 'vue';
