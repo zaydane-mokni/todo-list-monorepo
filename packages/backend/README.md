@@ -50,6 +50,19 @@ This project implements the backend of a simple To-Do List application, where us
 
 - Docker (to run MongoDB in a container)
 - Node.js
+- 
+### Project Setup
+1. Install dependencies:
+    ```bash
+    npm install
+    ```
+2. Run the development server:
+    ```bash
+    make serve-all
+    ```
+   The app will be available at `http://localhost:5173/`.
+
+
 
 ### Project Make Commands
 

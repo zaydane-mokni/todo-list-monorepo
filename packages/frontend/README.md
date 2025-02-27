@@ -1,5 +1,46 @@
-# Vue 3 + TypeScript + Vite
+# To-Do List Frontend
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">
+  <a href="https://vuejs.org/" target="blank"><img src="https://vuejs.org/images/logo.png" width="120" alt="Vue Logo" /></a>
+</p>
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+<p align="center">A Vue 3 frontend application for managing your To-Do List, using Vite, TypeScript, Pinia, and Vitest for testing.</p>
+
+## Tech Stack
+
+- **Frontend:** Vue 3 (with Vite)
+- **State Management:** Pinia
+- **Testing:** Vitest
+- **Styling:** Tailwind CSS
+
+## Features
+
+- Display a list of tasks with their current status (`to-do`, `in progress`, `done`).
+- Create new tasks, edit existing ones, and delete tasks.
+
+## Setup
+
+### Prerequisites
+
+- **Node.js**
+- **Vite**
+
+### Project Setup
+1. Install dependencies:
+    ```bash
+    npm install
+    ```
+2. Run the development server:
+    ```bash
+    make serve
+    ```
+   The app will be available at `http://localhost:5173/`.
+
+
+### Project Make Commands
+
+| Command                | Description                         |
+|------------------------|-------------------------------------|
+| `make serve`           | Starts the Vite development server. |
+| `make test-unit`       | Runs unit tests with Vitest.        |
+| `make test-unit-watch` | Watches test files for changes .    |
