@@ -24,9 +24,14 @@
 import TaskItem from '../components/TaskItem.vue';
 import { useRouter } from 'vue-router';
 import { useTaskStore } from '../store/tasks.ts';
+import { onMounted } from 'vue';
 
 const taskStore = useTaskStore();
 const router = useRouter();
+
+onMounted(async () => {
+  await useTaskStore().fetchTasks();
+});
 
 const navigateToCreateTask = async (): Promise<void> => {
   await router.push('/create');

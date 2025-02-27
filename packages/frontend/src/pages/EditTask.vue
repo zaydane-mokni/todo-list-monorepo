@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useTaskStore } from '../store/tasks.ts';
 import TaskForm from '../components/TaskForm.vue';
@@ -33,13 +33,31 @@ const router = useRouter();
 const taskStore = useTaskStore();
 
 const errorMessage = ref<string | null>(null);
+const task = ref<Task | null>(null);
+const taskId = route.params.id as string;
 
-const taskId = computed(() => route.params.id as string);
-const task = computed(() => taskStore.tasks.find((t) => t._id === taskId.value));
+onMounted( () => {
+  fetchTask();
+});
+
+const fetchTask = async () : void => {
+  const existingTask = taskStore.tasks.find((t) => t._id === taskId);
+
+  if (existingTask) {
+    task.value = existingTask;
+    return;
+  }
+
+  try {
+    task.value = await taskStore.getTaskById(taskId);
+  } catch (error) {
+    errorMessage.value = (error as Error).message;
+  }
+};
 
 const onTaskSubmit = async (updatedTask: Task): Promise<void> => {
   try {
-    await taskStore.updateTask(taskId.value, updatedTask);
+    await taskStore.updateTask(taskId, updatedTask);
     await router.push('/');
   } catch (error) {
     errorMessage.value = (error as Error).message;
