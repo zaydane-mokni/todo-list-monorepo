@@ -36,11 +36,11 @@ const errorMessage = ref<string | null>(null);
 const task = ref<Task | null>(null);
 const taskId = route.params.id as string;
 
-onMounted( () => {
-  fetchTask();
+onMounted( async () => {
+  await fetchTask();
 });
 
-const fetchTask = async () : void => {
+const fetchTask = async () : Promise<void> => {
   const existingTask = taskStore.tasks.find((t) => t._id === taskId);
 
   if (existingTask) {
